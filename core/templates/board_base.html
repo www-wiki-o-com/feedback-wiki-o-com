@@ -43,12 +43,13 @@ A web service for sharing opinions and avoiding arguments
       <li class="nav-item active">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="dropdown">
-        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{ user }}
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          {% if request.user.is_authenticated %}
+
+      {% if request.user.is_authenticated %}
+        <li class="dropdown">
+          <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ user }}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{% url 'forum_member:user_subscriptions' %}"> Subscriptions </a>
             <a class="dropdown-item" href="{% url 'forum_member:user_posts' request.user.id %}"> My Posts </a>
             {% get_permission 'can_access_moderation_queue' request.user as can_access_moderation_queue %}
@@ -56,11 +57,14 @@ A web service for sharing opinions and avoiding arguments
               <a class="dropdown-item" href="{% url 'forum_moderation:queue' %}"> Moderation Queue </a>
             {% endif %}
             <a class="dropdown-item" href="/accounts/logout/?next={{ request.path }}"> Logout </a>
-          {% else %}
-            <a class="dropdown-item" href="/accounts/login/?next={{ request.path }}"> Login </a>
-          {% endif %}
-        </div>
-      </li>
+          </div>
+        </li>
+      {% else %}
+        <li class="nav-item active">
+          <a class="nav-link" href="/accounts/login/?next={{ request.path }}"> Login </a>
+        </li>
+      {% endif %}
+
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'forum_search:search' %}">{% trans "Advanced search" %}</a>
       </li>
