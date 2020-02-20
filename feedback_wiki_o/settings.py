@@ -16,6 +16,11 @@ import os
 from machina import MACHINA_MAIN_TEMPLATE_DIR
 from machina import MACHINA_MAIN_STATIC_DIR
 
+try:
+    import feedback_wiki_o.env_vars
+except ImportError:
+    import feedback_wiki_o.example_env_vars
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
