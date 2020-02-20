@@ -6,7 +6,7 @@
 
 A web service for sharing opinions and avoiding arguments
 
-@file       feedback_wiki_o/settings.py
+@file       feedback_wiki_o/settings_base.py
 @brief      The private server file for Django
 @copyright  GNU Public License, 2018
 @authors    Frank Imeson
@@ -31,10 +31,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'zzs5xmw5j1ns^a(9-woi)7i(nj#$(rppn-eh4xgb%v49gkvbi#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '162.249.2.136', 'feedback.wiki-x.com']
-INTERNAL_IPS = ['localhost']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+INTERNAL_IPS = ['localhost', '127.0.0.1']
 
 
 # Application definition
