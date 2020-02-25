@@ -41,7 +41,7 @@ A web service for sharing opinions and avoiding arguments
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'forum:index' %}"><i class="fas fa-home">&nbsp;</i>Home</a>
       </li>
 
       {% if request.user.is_authenticated %}
@@ -78,13 +78,13 @@ A web service for sharing opinions and avoiding arguments
 
 <div class="my-5 container" id="main_container">
   {% block content_header %}
-    <div class="row">
+    {% comment %} <div class="row">
       <div class="col-12">
         <br />
         {% block breadcrumb %}{% include "partials/breadcrumb.html" %}{% endblock breadcrumb %}
         {% block messages %}{% include "partials/messages.html" %}{% endblock messages %}
       </div>
-    </div>
+    </div> {% endcomment %}
   {% endblock content_header %}
   {% block content %}
   {% endblock content %}
